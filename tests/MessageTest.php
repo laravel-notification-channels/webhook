@@ -2,7 +2,6 @@
 
 namespace NotificationChannels\Webhook\Test;
 
-use DateTime;
 use Illuminate\Support\Arr;
 use NotificationChannels\Webhook\WebhookMessage;
 
