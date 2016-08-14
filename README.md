@@ -55,7 +55,7 @@ class ProjectCreated extends Notification
                    'webhook' => 'data'
                ]
             ])
-            ->userAgen("Custom-User-Agent")
+            ->userAgent("Custom-User-Agent")
             ->header('X-Custom', 'Custom-Header');
     }
 }
