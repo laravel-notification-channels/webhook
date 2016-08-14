@@ -75,7 +75,7 @@ public function routeNotificationForWebhook()
 ### Available methods
 
 - `data('')`: Accepts a JSON-encodable value for the Webhook body.
-- `userAgemt('')`: Accepts a string value for the Webhook user agent.
+- `userAgent('')`: Accepts a string value for the Webhook user agent.
 - `header($name, $value)`: Sets additional headers to send with the POST Webhook.
 
 
