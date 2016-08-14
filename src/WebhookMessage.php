@@ -2,8 +2,6 @@
 
 namespace NotificationChannels\Webhook;
 
-use DateTime;
-
 class WebhookMessage
 {
     /** @var mixed */
@@ -83,7 +81,7 @@ class WebhookMessage
     {
         return [
             'data' => $this->data,
-            'headers' => $this->headers
+            'headers' => $this->headers,
         ];
     }
 }

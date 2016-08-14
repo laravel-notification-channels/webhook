@@ -26,8 +26,8 @@ class ChannelTest extends TestCase
                     'verify' => false,
                     'headers' => [
                         'User-Agent' => 'WebhookAgent',
-                        'X-Custom' => 'CustomHeader'
-                    ]
+                        'X-Custom' => 'CustomHeader',
+                    ],
                 ])
             ->andReturn($response);
         $channel = new WebhookChannel($client);
@@ -71,8 +71,8 @@ class TestNotification extends Notification
             (new WebhookMessage(
                 [
                     'payload' => [
-                        'webhook' => 'data'
-                    ]
+                        'webhook' => 'data',
+                    ],
                 ]
             ))->userAgent('WebhookAgent')
             ->header('X-Custom', 'CustomHeader');

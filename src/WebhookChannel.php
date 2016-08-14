@@ -8,11 +8,9 @@ use NotificationChannels\Webhook\Exceptions\CouldNotSendNotification;
 use NotificationChannels\Webhook\Events\MessageWasSent;
 use NotificationChannels\Webhook\Events\SendingMessage;
 use Illuminate\Notifications\Notification;
-use NotificationChannels\Webhook\Exceptions\InvalidConfiguration;
 
 class WebhookChannel
 {
-
     /** @var Client */
     protected $client;
 
@@ -49,7 +47,7 @@ class WebhookChannel
         $response = $this->client->post($url, [
             'body' => json_encode(Arr::get($webhookData, 'data')),
             'verify' => false,
-            'headers' => Arr::get($webhookData, 'headers')
+            'headers' => Arr::get($webhookData, 'headers'),
         ]);
 
         if ($response->getStatusCode() !== 200) {
