@@ -68,7 +68,7 @@ This method needs to return the URL where the notification Webhook will receive 
 ```php
 public function routeNotificationForWebhook()
 {
-    return 'http://requestb.in/1234x;
+    return 'http://requestb.in/1234x';
 }
 ```
 
