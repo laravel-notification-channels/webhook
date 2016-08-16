@@ -5,8 +5,6 @@ namespace NotificationChannels\Webhook;
 use GuzzleHttp\Client;
 use Illuminate\Support\Arr;
 use NotificationChannels\Webhook\Exceptions\CouldNotSendNotification;
-use NotificationChannels\Webhook\Events\MessageWasSent;
-use NotificationChannels\Webhook\Events\SendingMessage;
 use Illuminate\Notifications\Notification;
 
 class WebhookChannel
