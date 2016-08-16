@@ -36,12 +36,6 @@ class WebhookChannel
             return;
         }
 
-        $shouldSendMessage = event(new SendingMessage($notifiable, $notification), [], true) !== false;
-
-        if (! $shouldSendMessage) {
-            return;
-        }
-
         $webhookData = $notification->toWebhook($notifiable)->toArray();
 
         $response = $this->client->post($url, [
@@ -53,7 +47,5 @@ class WebhookChannel
         if ($response->getStatusCode() !== 200) {
             throw CouldNotSendNotification::serviceRespondedWithAnError($response);
         }
-
-        event(new MessageWasSent($notifiable, $notification));
     }
 }
