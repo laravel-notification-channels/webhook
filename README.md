@@ -61,7 +61,7 @@ class ProjectCreated extends Notification
 }
 ```
 
-In order to let your Notification know which Webhook user and Webhook list you are targeting, add the `routeNotificationForWebhook` method to your Notifiable model.
+In order to let your Notification know which URL should receive the Webhook data, add the `routeNotificationForWebhook` method to your Notifiable model.
 
 This method needs to return the URL where the notification Webhook will receive a POST request.
 
