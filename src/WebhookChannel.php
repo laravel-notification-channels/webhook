@@ -42,7 +42,7 @@ class WebhookChannel
             'headers' => Arr::get($webhookData, 'headers'),
         ]);
 
-        if ($response->getStatusCode() !== 200) {
+        if ($response->getStatusCode() >= 300 || $response->getStatusCode() < 200) {
             throw CouldNotSendNotification::serviceRespondedWithAnError($response);
         }
     }

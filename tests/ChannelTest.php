@@ -33,6 +33,26 @@ class ChannelTest extends TestCase
         $channel = new WebhookChannel($client);
         $channel->send(new TestNotifiable(), new TestNotification());
     }
+    /** @test */
+    public function it_can_send_a_notification_with_2xx_status()
+    {
+        $response = new Response(201);
+        $client = Mockery::mock(Client::class);
+        $client->shouldReceive('post')
+            ->once()
+            ->with('https://notifiable-webhook-url.com',
+                [
+                    'body' => '{"payload":{"webhook":"data"}}',
+                    'verify' => false,
+                    'headers' => [
+                        'User-Agent' => 'WebhookAgent',
+                        'X-Custom' => 'CustomHeader',
+                    ],
+                ])
+            ->andReturn($response);
+        $channel = new WebhookChannel($client);
+        $channel->send(new TestNotifiable(), new TestNotification());
+    }
 
     /** @test */
     public function it_throws_an_exception_when_it_could_not_send_the_notification()
