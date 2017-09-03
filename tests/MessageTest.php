@@ -3,9 +3,10 @@
 namespace NotificationChannels\Webhook\Test;
 
 use Illuminate\Support\Arr;
+use Orchestra\Testbench\TestCase;
 use NotificationChannels\Webhook\WebhookMessage;
 
-class MessageTest extends \PHPUnit_Framework_TestCase
+class MessageTest extends TestCase
 {
     /** @var \NotificationChannels\Webhook\WebhookMessage */
     protected $message;
