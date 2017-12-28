@@ -76,8 +76,10 @@ public function routeNotificationForWebhook()
 ### Available methods
 
 - `data('')`: Accepts a JSON-encodable value for the Webhook body.
+- `query('')`: Accepts an associative array of query string values to add to the request.
 - `userAgent('')`: Accepts a string value for the Webhook user agent.
 - `header($name, $value)`: Sets additional headers to send with the POST Webhook.
+- `verify()`: Enable the SSL certificate verification or provide the path to a CA bundle
 
 
 ## Changelog

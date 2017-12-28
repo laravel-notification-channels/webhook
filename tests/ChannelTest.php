@@ -21,6 +21,7 @@ class ChannelTest extends TestCase
             ->once()
             ->with('https://notifiable-webhook-url.com',
                 [
+                    'query' => null,
                     'body' => '{"payload":{"webhook":"data"}}',
                     'verify' => false,
                     'headers' => [
@@ -42,6 +43,7 @@ class ChannelTest extends TestCase
             ->once()
             ->with('https://notifiable-webhook-url.com',
                 [
+                    'query' => null,
                     'body' => '{"payload":{"webhook":"data"}}',
                     'verify' => false,
                     'headers' => [
@@ -52,6 +54,31 @@ class ChannelTest extends TestCase
             ->andReturn($response);
         $channel = new WebhookChannel($client);
         $channel->send(new TestNotifiable(), new TestNotification());
+    }
+
+    /** @test */
+    public function it_can_send_a_notification_with_query_string()
+    {
+        $response = new Response();
+        $client = Mockery::mock(Client::class);
+        $client->shouldReceive('post')
+            ->once()
+            ->with('https://notifiable-webhook-url.com',
+                [
+                    'query' => [
+                        'webhook' => 'data',
+                    ],
+                    'body' => '""',
+                    'verify' => false,
+                    'headers' => [
+                        'User-Agent' => 'WebhookAgent',
+                        'X-Custom' => 'CustomHeader',
+                    ],
+                ])
+            ->andReturn($response);
+
+        $channel = new WebhookChannel($client);
+        $channel->send(new TestNotifiable(), new QueryTestNotification ());
     }
 
     /**
@@ -96,5 +123,17 @@ class TestNotification extends Notification
                 ]
             ))->userAgent('WebhookAgent')
             ->header('X-Custom', 'CustomHeader');
+    }
+}
+
+class QueryTestNotification  extends Notification
+{
+    public function toWebhook($notifiable)
+    {
+        return
+            (new WebhookMessage())
+                ->query(['webhook' => 'data'])
+                ->userAgent('WebhookAgent')
+                ->header('X-Custom', 'CustomHeader');
     }
 }
