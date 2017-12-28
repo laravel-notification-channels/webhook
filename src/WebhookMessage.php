@@ -4,13 +4,25 @@ namespace NotificationChannels\Webhook;
 
 class WebhookMessage
 {
-    /** @var mixed */
+    /**
+     * The POST data of the Webhook request.
+     *
+     * @var mixed
+     */
     protected $data;
 
-    /** @var array|null */
+    /**
+     * The headers to send with the request.
+     *
+     * @var array|null
+     */
     protected $headers;
 
-    /** @var string|null */
+    /**
+     * The user agent header.
+     *
+     * @var string|null
+     */
     protected $userAgent;
 
     /**
