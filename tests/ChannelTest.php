@@ -78,7 +78,7 @@ class ChannelTest extends TestCase
             ->andReturn($response);
 
         $channel = new WebhookChannel($client);
-        $channel->send(new TestNotifiable(), new QueryTestNotification ());
+        $channel->send(new TestNotifiable(), new QueryTestNotification());
     }
 
     /**
@@ -126,7 +126,7 @@ class TestNotification extends Notification
     }
 }
 
-class QueryTestNotification  extends Notification
+class QueryTestNotification extends Notification
 {
     public function toWebhook($notifiable)
     {
