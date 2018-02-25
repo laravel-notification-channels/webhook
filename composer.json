@@ -3,7 +3,6 @@
     "description": "Webhook Notifications driver",
     "homepage": "https://github.com/laravel-notification-channels/webhook",
     "license": "MIT",
-    "version": "1.0.0",
     "authors": [
         {
             "name": "Marcel Pociot",
