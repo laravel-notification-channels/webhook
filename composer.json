@@ -3,6 +3,7 @@
     "description": "Webhook Notifications driver",
     "homepage": "https://github.com/laravel-notification-channels/webhook",
     "license": "MIT",
+    "version": "1.0.0",
     "authors": [
         {
             "name": "Marcel Pociot",
@@ -13,13 +14,13 @@
     "require": {
         "php": ">=5.6.4",
         "guzzlehttp/guzzle": "~6.0",
-        "illuminate/notifications": "5.3.*|5.4.*|5.5.*",
-        "illuminate/support": "5.1.*|5.2.*|5.3.*|5.4.*|5.5.*"
+        "illuminate/notifications": "5.3.*|5.4.*|5.5.*|5.6.*",
+        "illuminate/support": "5.1.*|5.2.*|5.3.*|5.4.*|5.5.*|5.6.*"
     },
     "require-dev": {
-        "mockery/mockery": "^0.9.5",
-        "phpunit/phpunit": "4.*|~6.0",
-        "orchestra/testbench": "3.3.x-dev|^3.5.0",
+        "mockery/mockery": "^0.9.5|~1.0",
+        "phpunit/phpunit": "4.*|~6.0|~7.0",
+        "orchestra/testbench": "3.3.x-dev|^3.5.0|^3.6",
         "orchestra/database": "3.3.x-dev|^3.5.0"
     },
     "autoload": {
