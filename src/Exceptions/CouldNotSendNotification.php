@@ -2,10 +2,21 @@
 
 namespace NotificationChannels\Webhook\Exceptions;
 
-class CouldNotSendNotification extends \Exception
+use Psr\Http\Message\ResponseInterface as Response;
+use Exception;
+
+class CouldNotSendNotification extends Exception
 {
-    public static function serviceRespondedWithAnError($response)
+    /**
+     * @const string
+     */
+    private const ERROR_STRING = 'Webhook responded with an error: %s';
+
+    /**
+     * @param Psr\Http\Message\ResponseInterface $response
+     */
+    public static function serviceRespondedWithAnError(Response $response)
     {
-        return new static('Webhook responded with an error: `'.$response->getBody()->getContents().'`');
+        return new static(sprintf(self::ERROR_STRING, (string) $response->getBody()->getContents()));
     }
 }

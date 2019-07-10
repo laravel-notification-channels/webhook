@@ -4,8 +4,12 @@ namespace NotificationChannels\Webhook\Test;
 
 use Mockery;
 use GuzzleHttp\Client;
+use GuzzleHttp\HandlerStack;
+use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\Psr7\Response;
 use Orchestra\Testbench\TestCase;
+use GuzzleHttp\Handler\MockHandler;
+use GuzzleHttp\Exception\RequestException;
 use Illuminate\Notifications\Notification;
 use NotificationChannels\Webhook\WebhookChannel;
 use NotificationChannels\Webhook\WebhookMessage;
@@ -60,11 +64,16 @@ class ChannelTest extends TestCase
      */
     public function it_throws_an_exception_when_it_could_not_send_the_notification()
     {
-        $response = new Response(500);
-        $client = Mockery::mock(Client::class);
-        $client->shouldReceive('post')
-            ->once()
-            ->andReturn($response);
+        $mock = new MockHandler([
+            new RequestException('Server Error',
+                new Request('POST', 'test'),
+                new Response(500, [], 'Server Error')
+            )
+        ]);
+
+        $handler = HandlerStack::create($mock);
+        $client = new Client(['handler' => $handler]);
+
         $channel = new WebhookChannel($client);
         $channel->send(new TestNotifiable(), new TestNotification());
     }
