@@ -4,9 +4,7 @@ namespace NotificationChannels\Webhook\Providers;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
-
 use NotificationChannels\Webhook\WebhookChannel;
-
 use Illuminate\Support\ServiceProvider as BaseProvider;
 
 class ServiceProvider extends Baseprovider

@@ -2,12 +2,10 @@
 
 namespace NotificationChannels\Webhook;
 
-use GuzzleHttp\Exception\RequestException;
-use GuzzleHttp\ClientInterface;
-
 use Illuminate\Support\Arr;
+use GuzzleHttp\ClientInterface;
+use GuzzleHttp\Exception\RequestException;
 use Illuminate\Notifications\Notification;
-
 use NotificationChannels\Webhook\Exceptions\CouldNotSendNotification;
 
 class WebhookChannel
@@ -42,7 +40,7 @@ class WebhookChannel
     }
 
     /**
-     * Send the notification to a single webhook
+     * Send the notification to a single webhook.
      *
      * @param mixed $notifiable
      * @param \Illuminate\Notifications\Notification $notification
@@ -59,7 +57,7 @@ class WebhookChannel
         try {
             $response = $this->client->post($url, [
                 'body'      => json_encode($data),
-                'headers'   => $headers 
+                'headers'   => $headers,
             ]);
         } catch (RequestException $exception) {
             throw CouldNotSendNotification::serviceRespondedWithAnError($exception->getResponse());

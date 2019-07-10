@@ -2,8 +2,8 @@
 
 namespace NotificationChannels\Webhook\Exceptions;
 
-use Psr\Http\Message\ResponseInterface as Response;
 use Exception;
+use Psr\Http\Message\ResponseInterface as Response;
 
 class CouldNotSendNotification extends Exception
 {

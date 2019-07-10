@@ -4,10 +4,10 @@ namespace NotificationChannels\Webhook\Test;
 
 use Mockery;
 use GuzzleHttp\Client;
-use GuzzleHttp\ClientInterface;
 use GuzzleHttp\HandlerStack;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\Psr7\Response;
+use GuzzleHttp\ClientInterface;
 use GuzzleHttp\Handler\MockHandler;
 use GuzzleHttp\Exception\RequestException;
 use Illuminate\Notifications\Notification;
@@ -16,12 +16,11 @@ use NotificationChannels\Webhook\WebhookMessage;
 use NotificationChannels\Webhook\Exceptions\CouldNotSendNotification;
 
 class ChannelTest extends TestCase
-{ 
+{
     /** @test */
     public function it_can_send_a_notification()
     {
         $client = $this->createTestClient(200);
-        
         $channel = new WebhookChannel($client);
         $channel->send(new TestNotifiable(), new TestNotification());
     }
@@ -46,7 +45,7 @@ class ChannelTest extends TestCase
                 new RequestException('Server Error',
                 new Request('POST', 'test'),
                 new Response(500, [], 'Server Error')
-            )
+            ),
         ]);
 
         $handler = HandlerStack::create($mock);
@@ -109,5 +108,3 @@ class TestNotification extends Notification
             ->header('X-Custom', 'CustomHeader');
     }
 }
-
-
