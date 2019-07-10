@@ -11,12 +11,11 @@ class MessageTest extends TestCase
     protected $message;
 
     /**
-     * Hook into the testing framework
+     * Hook into the testing framework.
      */
     public function setUp() : void
     {
         parent::setUp();
-
         $this->message = new WebhookMessage();
     }
 
