@@ -34,7 +34,7 @@ class ServiceProvider extends Baseprovider
     {
         $this->app
             ->when(WebhookChannel::class)
-            ->needs(ClientInterface)
+            ->needs(ClientInterface::class)
             ->give(function ($app) {
                 return new Client($app['config.webhook-notifications']['default-config']);
             });
