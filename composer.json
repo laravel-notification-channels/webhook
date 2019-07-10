@@ -35,5 +35,12 @@
     },
     "config": {
         "sort-packages": true
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "NotificationChannels\\Webhook\\Providers\\ServiceProvider"
+            ]
+        }
     }
 }

@@ -65,7 +65,6 @@ class ChannelTest extends TestCase
 
         $testPayload = [
             'body' => '{"payload":{"webhook":"data"}}',
-            'verify' => false,
             'headers' => [
                 'User-Agent' => 'WebhookAgent',
                 'X-Custom' => 'CustomHeader',

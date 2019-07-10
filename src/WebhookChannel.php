@@ -59,7 +59,6 @@ class WebhookChannel
         try {
             $response = $this->client->post($url, [
                 'body'      => json_encode($data),
-                'verify'    => false,
                 'headers'   => $headers 
             ]);
         } catch (RequestException $exception) {

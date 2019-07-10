@@ -23,6 +23,8 @@ You can install the package via composer:
 composer require laravel-notification-channels/webhook
 ```
 
+Afterwards, you might want to run `php artisan vendor:publish` afterwards, and configure the base options used by the client internally, as defined [Here](http://docs.guzzlephp.org/en/stable/request-options.html). Most notably, in the original version of this package, SSL was disabled by default. While enabling is a sensible option, if your implemenation does not work with SSL enabled, you may disable it here. Other usecases include defining a default URL, if you're hitting only one webservice with notifications.
+
 ## Usage
 
 Now you can use the channel in your `via()` method inside the notification:
