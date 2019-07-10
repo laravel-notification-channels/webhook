@@ -3,7 +3,6 @@
 namespace NotificationChannels\Webhook\Test;
 
 use Illuminate\Support\Arr;
-use Orchestra\Testbench\TestCase;
 use NotificationChannels\Webhook\WebhookMessage;
 
 class MessageTest extends TestCase
@@ -11,9 +10,13 @@ class MessageTest extends TestCase
     /** @var \NotificationChannels\Webhook\WebhookMessage */
     protected $message;
 
-    public function setUp()
+    /**
+     * Hook into the testing framework
+     */
+    public function setUp() : void
     {
         parent::setUp();
+
         $this->message = new WebhookMessage();
     }
 

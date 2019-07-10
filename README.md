@@ -1,21 +1,12 @@
-# Webhook notifications channel for Laravel 5.3
+# Webhook notifications channel for Laravel 5.8
 
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/laravel-notification-channels/webhook.svg?style=flat-square)](https://packagist.org/packages/laravel-notification-channels/webhook)
-[![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE.md)
-[![Build Status](https://img.shields.io/travis/laravel-notification-channels/webhook/master.svg?style=flat-square)](https://travis-ci.org/laravel-notification-channels/webhook)
-[![StyleCI](https://styleci.io/repos/65685866/shield)](https://styleci.io/repos/65685866)
-[![SensioLabsInsight](https://img.shields.io/sensiolabs/i/9015691f-130d-4fca-8710-72a010abc684.svg?style=flat-square)](https://insight.sensiolabs.com/projects/9015691f-130d-4fca-8710-72a010abc684)
-[![Quality Score](https://img.shields.io/scrutinizer/g/laravel-notification-channels/webhook.svg?style=flat-square)](https://scrutinizer-ci.com/g/laravel-notification-channels/webhook)
-[![Code Coverage](https://img.shields.io/scrutinizer/coverage/g/laravel-notification-channels/webhook/master.svg?style=flat-square)](https://scrutinizer-ci.com/g/laravel-notification-channels/webhook/?branch=master)
-[![Total Downloads](https://img.shields.io/packagist/dt/laravel-notification-channels/webhook.svg?style=flat-square)](https://packagist.org/packages/laravel-notification-channels/webhook)
-
-This package makes it easy to send webhooks using the Laravel 5.3 notification system.
+This package makes it easy to send webhooks using the Laravel 5.8 notification system.
 
 ## Contents
 
 - [Installation](#installation)
 - [Usage](#usage)
-	- [Available Message methods](#available-message-methods)
+- [Available Message methods](#available-message-methods)
 - [Changelog](#changelog)
 - [Testing](#testing)
 - [Security](#security)
@@ -64,7 +55,7 @@ class ProjectCreated extends Notification
 
 In order to let your Notification know which URL should receive the Webhook data, add the `routeNotificationForWebhook` method to your Notifiable model.
 
-This method needs to return the URL where the notification Webhook will receive a POST request.
+This method needs to return a single URL, or an array of URLS, where the notification Webhook will receive a POST request.
 
 ```php
 public function routeNotificationForWebhook()
@@ -101,6 +92,7 @@ Please see [CONTRIBUTING](CONTRIBUTING.md) for details.
 ## Credits
 
 - [Marcel Pociot](https://github.com/mpociot)
+- [Niels Mokkenstorm](https://github.com/nmokkenstorm)
 - [All Contributors](../../contributors)
 
 ## License
