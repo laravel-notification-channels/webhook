@@ -10,7 +10,7 @@ class TestCase extends BaseTestCase
     /**
      * Hook into the testing framework.
      */
-    public function tearDown() : void
+    public function tearDown()
     {
         if ($container = Mockery::getContainer()) {
             $this->addToAssertionCount($container->mockery_getExpectationCount());
