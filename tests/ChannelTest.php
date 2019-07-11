@@ -58,9 +58,9 @@ class ChannelTest extends TestCase
     /**
      * @param int
      */
-    private function createTestClient(int $statusCode = 200)
+    private function createTestClient($statusCode)
     {
-        $response = new Response(201);
+        $response = new Response($statusCode);
 
         $testPayload = [
             'body' => '{"payload":{"webhook":"data"}}',
@@ -85,7 +85,7 @@ class TestNotifiable
     use \Illuminate\Notifications\Notifiable;
 
     /**
-     * @return int
+     * @return string
      */
     public function routeNotificationForWebhook()
     {

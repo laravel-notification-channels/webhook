@@ -52,12 +52,10 @@ class WebhookChannel
     {
         $webhookData = $notification->toWebhook($notifiable)->toArray();
 
-        [ 'data' => $data, 'headers' => $headers ] = $webhookData;
-
         try {
             $response = $this->client->post($url, [
-                'body'      => json_encode($data),
-                'headers'   => $headers,
+                'body'      => json_encode($data['data']),
+                'headers'   => $headers['headers'],
             ]);
         } catch (RequestException $exception) {
             throw CouldNotSendNotification::serviceRespondedWithAnError($exception->getResponse());
