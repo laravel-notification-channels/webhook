@@ -1,10 +1,11 @@
 <?php
 
-
 namespace NotificationChannels\Webhook\Exceptions;
 
-
-class CouldNotSendNotification
+class CouldNotSendNotification extends \Exception
 {
-
+    public static function serviceRespondedWithAnError($response)
+    {
+        return new static('Webhook responded with an error: `'.$response->getBody()->getContents().'`');
+    }
 }

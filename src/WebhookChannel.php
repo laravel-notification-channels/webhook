@@ -27,6 +27,8 @@ class WebhookChannel
      * @param \Illuminate\Notifications\Notification $notification
      *
      * @return \GuzzleHttp\Psr7\Response
+     *
+     * @throws \NotificationChannels\Webhook\Exceptions\CouldNotSendNotification
      */
     public function send($notifiable, Notification $notification)
     {
@@ -36,10 +38,16 @@ class WebhookChannel
 
         $webhookData = $notification->toWebhook($notifiable)->toArray();
 
-        return $this->client->post($url, [
+        $response = $this->client->post($url, [
             'body' => json_encode(Arr::get($webhookData, 'data')),
             'verify' => false,
             'headers' => Arr::get($webhookData, 'headers'),
         ]);
+
+        if ($response->getStatusCode() >= 300 || $response->getStatusCode() < 200) {
+            throw CouldNotSendNotification::serviceRespondedWithAnError($response);
+        }
+
+        return $response;
     }
 }
