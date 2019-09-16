@@ -1,4 +1,4 @@
-# Webhook notifications channel for Laravel 5.3
+# Webhook notifications channel for Laravel 5.5+ and 6.0
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/laravel-notification-channels/webhook.svg?style=flat-square)](https://packagist.org/packages/laravel-notification-channels/webhook)
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE.md)
@@ -9,7 +9,7 @@
 [![Code Coverage](https://img.shields.io/scrutinizer/coverage/g/laravel-notification-channels/webhook/master.svg?style=flat-square)](https://scrutinizer-ci.com/g/laravel-notification-channels/webhook/?branch=master)
 [![Total Downloads](https://img.shields.io/packagist/dt/laravel-notification-channels/webhook.svg?style=flat-square)](https://packagist.org/packages/laravel-notification-channels/webhook)
 
-This package makes it easy to send webhooks using the Laravel 5.3 notification system.
+This package makes it easy to send webhooks using the Laravel notification system.
 
 ## Contents
 
