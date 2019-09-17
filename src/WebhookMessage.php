@@ -4,14 +4,40 @@ namespace NotificationChannels\Webhook;
 
 class WebhookMessage
 {
-    /** @var mixed */
+    /**
+     * The GET parameters of the request.
+     *
+     * @var array|string|null
+     */
+    protected $query;
+
+    /**
+     * The POST data of the Webhook request.
+     *
+     * @var mixed
+     */
     protected $data;
 
-    /** @var array|null */
+    /**
+     * The headers to send with the request.
+     *
+     * @var array|null
+     */
     protected $headers;
 
-    /** @var string|null */
+    /**
+     * The user agent header.
+     *
+     * @var string|null
+     */
     protected $userAgent;
+
+    /**
+     * The Guzzle verify option.
+     *
+     * @var bool|string
+     */
+    protected $verify = false;
 
     /**
      * @param mixed $data
@@ -29,6 +55,20 @@ class WebhookMessage
     public function __construct($data = '')
     {
         $this->data = $data;
+    }
+
+    /**
+     * Set the Webhook parameters to be URL encoded.
+     *
+     * @param mixed $query
+     *
+     * @return $this
+     */
+    public function query($query)
+    {
+        $this->query = $query;
+
+        return $this;
     }
 
     /**
@@ -75,13 +115,27 @@ class WebhookMessage
     }
 
     /**
+     * Indicate that the request should be verified.
+     *
+     * @return $this
+     */
+    public function verify($value = true)
+    {
+        $this->verify = $value;
+
+        return $this;
+    }
+
+    /**
      * @return array
      */
     public function toArray()
     {
         return [
+            'query' => $this->query,
             'data' => $this->data,
             'headers' => $this->headers,
+            'verify' => $this->verify,
         ];
     }
 }
