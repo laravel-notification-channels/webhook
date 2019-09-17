@@ -68,7 +68,8 @@ class ChannelTest extends TestCase
         $client = Mockery::mock(Client::class);
         $client->shouldReceive('post')
             ->once()
-            ->with('https://notifiable-webhook-url.com',
+            ->with(
+                'https://notifiable-webhook-url.com',
                 [
                     'query' => [
                         'webhook' => 'data',
@@ -79,7 +80,8 @@ class ChannelTest extends TestCase
                         'User-Agent' => 'WebhookAgent',
                         'X-Custom' => 'CustomHeader',
                     ],
-                ])
+                ]
+            )
             ->andReturn($response);
 
         $channel = new WebhookChannel($client);
@@ -101,17 +103,6 @@ class ChannelTest extends TestCase
         $client = Mockery::mock(Client::class);
         $client->shouldReceive('post')
             ->once()
-            ->with(
-                'https://notifiable-webhook-url.com',
-                [
-                    'body' => '{"payload":{"webhook":"data"}}',
-                    'verify' => false,
-                    'headers' => [
-                        'User-Agent' => 'WebhookAgent',
-                        'X-Custom' => 'CustomHeader',
-                    ],
-                ]
-            )
             ->andReturn($response);
         $channel = new WebhookChannel($client);
         $channel->send(new TestNotifiable(), new TestNotification());
