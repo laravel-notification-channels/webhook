@@ -9,7 +9,6 @@ class CouldNotSendNotification extends \Exception
     private $response;
 
     /**
-     * CouldNotSendNotification constructor.
      * @param Response $response
      * @param string $message
      * @param int|null $code
@@ -25,7 +24,7 @@ class CouldNotSendNotification extends \Exception
 
     /**
      * @param Response $response
-     * @return CouldNotSendNotification
+     * @return self
      */
     public static function serviceRespondedWithAnError(Response $response)
     {
