@@ -2,14 +2,14 @@
 
 namespace NotificationChannels\Webhook\Test;
 
+use Mockery;
 use GuzzleHttp\Client;
 use GuzzleHttp\Psr7\Response;
+use Orchestra\Testbench\TestCase;
 use Illuminate\Notifications\Notification;
-use Mockery;
-use NotificationChannels\Webhook\Exceptions\CouldNotSendNotification;
 use NotificationChannels\Webhook\WebhookChannel;
 use NotificationChannels\Webhook\WebhookMessage;
-use Orchestra\Testbench\TestCase;
+use NotificationChannels\Webhook\Exceptions\CouldNotSendNotification;
 
 class ChannelTest extends TestCase
 {
