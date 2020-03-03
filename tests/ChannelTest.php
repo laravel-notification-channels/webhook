@@ -2,6 +2,7 @@
 
 namespace NotificationChannels\Webhook\Test;
 
+use Illuminate\Notifications\Notifiable;
 use Mockery;
 use GuzzleHttp\Client;
 use GuzzleHttp\Psr7\Response;
@@ -89,7 +90,6 @@ class ChannelTest extends TestCase
     }
 
     /**
-     * @expectedException NotificationChannels\Webhook\Exceptions\CouldNotSendNotification
      * @test
      */
     public function it_throws_an_exception_when_it_could_not_send_the_notification()
@@ -105,13 +105,14 @@ class ChannelTest extends TestCase
             ->once()
             ->andReturn($response);
         $channel = new WebhookChannel($client);
+        $this->expectException(CouldNotSendNotification::class);
         $channel->send(new TestNotifiable(), new TestNotification());
     }
 }
 
 class TestNotifiable
 {
-    use \Illuminate\Notifications\Notifiable;
+    use Notifiable;
 
     /**
      * @return int

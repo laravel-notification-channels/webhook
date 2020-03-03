@@ -11,7 +11,7 @@ class MessageTest extends TestCase
     /** @var \NotificationChannels\Webhook\WebhookMessage */
     protected $message;
 
-    public function setUp()
+    protected function setUp(): void
     {
         parent::setUp();
         $this->message = new WebhookMessage();
