@@ -3,8 +3,8 @@
 namespace NotificationChannels\Webhook\Test;
 
 use Illuminate\Support\Arr;
-use Orchestra\Testbench\TestCase;
 use NotificationChannels\Webhook\WebhookMessage;
+use Orchestra\Testbench\TestCase;
 
 class MessageTest extends TestCase
 {
