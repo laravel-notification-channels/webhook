@@ -3,8 +3,8 @@
 namespace NotificationChannels\Webhook;
 
 use GuzzleHttp\Client;
-use Illuminate\Support\Arr;
 use Illuminate\Notifications\Notification;
+use Illuminate\Support\Arr;
 use NotificationChannels\Webhook\Exceptions\CouldNotSendNotification;
 
 class WebhookChannel
@@ -32,7 +32,7 @@ class WebhookChannel
      */
     public function send($notifiable, Notification $notification)
     {
-        if (! $url = $notifiable->routeNotificationFor('Webhook')) {
+        if (! $url = $notifiable->routeNotificationFor('webhook')) {
             return;
         }
 

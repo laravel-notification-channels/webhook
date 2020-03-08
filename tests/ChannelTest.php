@@ -2,14 +2,14 @@
 
 namespace NotificationChannels\Webhook\Test;
 
-use Mockery;
 use GuzzleHttp\Client;
 use GuzzleHttp\Psr7\Response;
-use Orchestra\Testbench\TestCase;
 use Illuminate\Notifications\Notification;
+use Mockery;
+use NotificationChannels\Webhook\Exceptions\CouldNotSendNotification;
 use NotificationChannels\Webhook\WebhookChannel;
 use NotificationChannels\Webhook\WebhookMessage;
-use NotificationChannels\Webhook\Exceptions\CouldNotSendNotification;
+use Orchestra\Testbench\TestCase;
 
 class ChannelTest extends TestCase
 {
@@ -89,16 +89,15 @@ class ChannelTest extends TestCase
     }
 
     /**
-     * @expectedException NotificationChannels\Webhook\Exceptions\CouldNotSendNotification
      * @test
      */
     public function it_throws_an_exception_when_it_could_not_send_the_notification()
     {
         $response = new Response(500);
 
-        $this->expectExceptionObject(
-            new CouldNotSendNotification($response, 'Webhook responded with an error: ``', 500)
-        );
+        $this->expectException(CouldNotSendNotification::class);
+        $this->expectExceptionMessage('Webhook responded with an error: ``');
+        $this->expectExceptionCode(500);
 
         $client = Mockery::mock(Client::class);
         $client->shouldReceive('post')
