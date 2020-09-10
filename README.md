@@ -94,7 +94,7 @@ $ composer test
 
 ## Security
 
-If you discover any security related issues, please email m.pociot@gmail.com instead of using the issue tracker.
+If you discover any security related issues, please email atymicq@gmail.com instead of using the issue tracker.
 
 ## Contributing
 
