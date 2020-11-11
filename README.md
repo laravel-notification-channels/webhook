@@ -9,7 +9,7 @@
 [![Code Coverage](https://img.shields.io/scrutinizer/coverage/g/laravel-notification-channels/webhook/master.svg?style=flat-square)](https://scrutinizer-ci.com/g/laravel-notification-channels/webhook/?branch=master)
 [![Total Downloads](https://img.shields.io/packagist/dt/laravel-notification-channels/webhook.svg?style=flat-square)](https://packagist.org/packages/laravel-notification-channels/webhook)
 
-This package makes it easy to send webhooks using the Laravel notification system. Supports 5.5+. 6.x and 7.x.
+This package makes it easy to send webhooks using the Laravel notification system. Supports 5.5+, 6.x, 7.x and 8.x.
 
 ## Contents
 

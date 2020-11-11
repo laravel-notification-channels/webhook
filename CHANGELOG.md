@@ -2,6 +2,10 @@
 
 All notable changes to `webhook` will be documented in this file
 
+## 2.2.0 - 2020-11-11
+
+* Added PHP 8 support.
+
 ## 2.1.0 - 2020-08-21
 
 * Added Laravel 8 support.
