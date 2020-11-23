@@ -3,15 +3,15 @@
 namespace NotificationChannels\Webhook\Test;
 
 use Illuminate\Support\Arr;
-use Orchestra\Testbench\TestCase;
 use NotificationChannels\Webhook\WebhookMessage;
+use Orchestra\Testbench\TestCase;
 
 class MessageTest extends TestCase
 {
     /** @var \NotificationChannels\Webhook\WebhookMessage */
     protected $message;
 
-    public function setUp()
+    public function setUp(): void
     {
         parent::setUp();
         $this->message = new WebhookMessage();
@@ -34,6 +34,13 @@ class MessageTest extends TestCase
     }
 
     /** @test */
+    public function it_can_set_the_webhook_query()
+    {
+        $this->message->query(['foo' => 'bar']);
+        $this->assertEquals(['foo' => 'bar'], Arr::get($this->message->toArray(), 'query'));
+    }
+
+    /** @test */
     public function it_can_set_the_webhook_data()
     {
         $this->message->data(['foo' => 'bar']);
@@ -52,5 +59,12 @@ class MessageTest extends TestCase
     {
         $this->message->header('X-Custom', 'Value');
         $this->assertEquals(['X-Custom' => 'Value'], Arr::get($this->message->toArray(), 'headers'));
+    }
+
+    /** @test */
+    public function it_can_verify_the_request()
+    {
+        $this->message->verify();
+        $this->assertEquals(true, Arr::get($this->message->toArray(), 'verify'));
     }
 }
