@@ -6,10 +6,12 @@ use GuzzleHttp\Client;
 use GuzzleHttp\Psr7\Response;
 use Illuminate\Notifications\Notification;
 use Mockery;
+use NotificationChannels\Webhook\Events\WebhookNotificationSentEvent;
 use NotificationChannels\Webhook\Exceptions\CouldNotSendNotification;
 use NotificationChannels\Webhook\WebhookChannel;
 use NotificationChannels\Webhook\WebhookMessage;
 use Orchestra\Testbench\TestCase;
+use Illuminate\Support\Facades\Event;
 
 class ChannelTest extends TestCase
 {
@@ -59,6 +61,32 @@ class ChannelTest extends TestCase
             ->andReturn($response);
         $channel = new WebhookChannel($client);
         $channel->send(new TestNotifiable(), new TestNotification());
+    }
+
+    /** @test */
+    public function it_fires_an_event_when_it_recieves_a_response()
+    {
+        Event::fake();
+        $response = new Response(200);
+        $client = Mockery::mock(Client::class);
+        $client->shouldReceive('post')
+            ->once()
+            ->with(
+                'https://notifiable-webhook-url.com',
+                [
+                    'query' => null,
+                    'body' => '{"payload":{"webhook":"data"}}',
+                    'verify' => false,
+                    'headers' => [
+                        'User-Agent' => 'WebhookAgent',
+                        'X-Custom' => 'CustomHeader',
+                    ],
+                ]
+            )
+            ->andReturn($response);
+        $channel = new WebhookChannel($client);
+        $channel->send(new TestNotifiable(), new TestNotification());
+        Event::assertDispatched(WebhookNotificationSentEvent::class);
     }
 
     /** @test */
