@@ -101,6 +101,22 @@ class WebhookMessage
     }
 
     /**
+     * Add multiple Webhook request custom headers.
+     *
+     * @param array $headers
+     *
+     * @return $this
+     */
+    public function headers($headers)
+    {
+        foreach ($headers as $name => $value) {
+            $this->headers[$name] = $value;
+        }
+
+        return $this;
+    }
+
+    /**
      * Set the Webhook request UserAgent.
      *
      * @param string $userAgent

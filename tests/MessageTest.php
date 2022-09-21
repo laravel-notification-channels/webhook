@@ -67,4 +67,11 @@ class MessageTest extends TestCase
         $this->message->verify();
         $this->assertEquals(true, Arr::get($this->message->toArray(), 'verify'));
     }
+
+    /** @test */
+    public function it_can_set_multiple_custom_headers()
+    {
+        $this->message->headers(['X-Custom' => 'Value', 'X-Another' => 'Another']);
+        $this->assertEquals(['X-Custom' => 'Value', 'X-Another' => 'Another'], Arr::get($this->message->toArray(), 'headers'));
+    }
 }
