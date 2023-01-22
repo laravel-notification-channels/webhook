@@ -9,13 +9,28 @@
 [![Code Coverage](https://img.shields.io/scrutinizer/coverage/g/laravel-notification-channels/webhook/master.svg?style=flat-square)](https://scrutinizer-ci.com/g/laravel-notification-channels/webhook/?branch=master)
 [![Total Downloads](https://img.shields.io/packagist/dt/laravel-notification-channels/webhook.svg?style=flat-square)](https://packagist.org/packages/laravel-notification-channels/webhook)
 
-This package makes it easy to send webhooks using the Laravel notification system. Supports 5.5+, 6.x, 7.x and 8.x.
+This package makes it easy to send webhooks using the Laravel notification system.
+
+## Compatibility
+
+| Laravel version                                                        | PHP version        | Package version |
+|------------------------------------------------------------------------|--------------------|-----------------|
+| ^6.0 &#124; ^7.0 &#124; ^8.0 &#124; ^9.0 &#124; ^10.0                  | ^7.2.5 &#124; ^8.0 | ^2.4            |
+| ^6.0 &#124; ^7.0 &#124; ^8.0 &#124; ^9.0                               | ^7.2.5 &#124; ^8.0 | ^2.3            |
+| ^6.0 &#124; ^7.0 &#124; ^8.0                                           | ^7.2.5 &#124; ^8.0 | ^2.2            |
+| ^6.0 &#124; ^7.0 &#124; ^8.0                                           | ^7.2.5             | ^2.1            |
+| ~5.5 &#124; ~6.0 &#124; ~7.0                                           | &gt;=7.2.5         | ^2.0            |
+| ~5.5 &#124; ~6.0                                                       | &gt;=7.0           | ^1.3            |
+| 5.1.* &#124; 5.2.* &#124; 5.3.* &#124; 5.4.* &#124; 5.5.* &#124; 5.6.* | &gt;=5.6.4         | ^1.2            |
+| 5.1.* &#124; 5.2.* &#124; 5.3.* &#124; 5.4.* &#124; 5.5.*              | &gt;=5.6.4         | ^1.1            |
+| 5.1.* &#124; 5.2.* &#124; 5.3.* &#124; 5.4.*                           | &gt;=5.6.4         | ^1.0.2          |
+| 5.1.* &#124; 5.2.* &#124; 5.3.*                                        | &gt;=5.6.4         | ^1.0.0          |
 
 ## Contents
 
 - [Installation](#installation)
 - [Usage](#usage)
-	- [Available Message methods](#available-message-methods)
+  - [Available Message methods](#available-message-methods)
 - [Changelog](#changelog)
 - [Testing](#testing)
 - [Security](#security)
@@ -80,7 +95,6 @@ public function routeNotificationForWebhook()
 - `userAgent('')`: Accepts a string value for the Webhook user agent.
 - `header($name, $value)`: Sets additional headers to send with the POST Webhook.
 - `verify()`: Enable the SSL certificate verification or provide the path to a CA bundle
-
 
 ## Changelog
 
