@@ -34,9 +34,9 @@ jobs:
     name: PHP ${{ matrix.php }} on Laravel ${{ matrix.laravel }}
     steps:
     - name: Checkout
-      uses: actions/checkout@master
+      uses: actions/checkout@v3
     - name: Setup PHP
-      uses: shivammathur/setup-php@master
+      uses: shivammathur/setup-php@v2
       with:
         php-version: ${{ matrix.php }}
         extensions: mbstring, xdebug
