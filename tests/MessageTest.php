@@ -67,4 +67,11 @@ class MessageTest extends TestCase
         $this->message->verify();
         $this->assertEquals(true, Arr::get($this->message->toArray(), 'verify'));
     }
+
+    /** @test */
+    public function it_can_add_request_options()
+    {
+        $this->message->http(['timeout' => 3.14]);
+        $this->assertEquals(3.14, Arr::get($this->message->toArray(), 'http.timeout'));
+    }
 }
