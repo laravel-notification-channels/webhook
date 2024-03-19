@@ -74,7 +74,6 @@ class ChannelTest extends TestCase
                     'query' => [
                         'webhook' => 'data',
                     ],
-                    'body' => '""',
                     'verify' => false,
                     'headers' => [
                         'User-Agent' => 'WebhookAgent',
@@ -86,6 +85,33 @@ class ChannelTest extends TestCase
 
         $channel = new WebhookChannel($client);
         $channel->send(new TestNotifiable(), new QueryTestNotification());
+    }
+
+    /** @test */
+    public function it_can_send_a_notification_as_form_urlencoded()
+    {
+        $response = new Response();
+        $client = \Mockery::mock(Client::class);
+        $client->shouldReceive('post')
+            ->once()
+            ->with(
+                'https://notifiable-webhook-url.com',
+                [
+                    'query' => null,
+                    'form_params' => [
+                        'webhook' => 'data',
+                    ],
+                    'verify' => false,
+                    'headers' => [
+                        'User-Agent' => 'WebhookAgent',
+                        'X-Custom' => 'CustomHeader',
+                    ],
+                ]
+            )
+            ->andReturn($response);
+
+        $channel = new WebhookChannel($client);
+        $channel->send(new TestNotifiable(), new FormTestNotification());
     }
 
     /**
@@ -143,8 +169,19 @@ class QueryTestNotification extends Notification
     {
         return
             (new WebhookMessage())
-                ->query(['webhook' => 'data'])
-                ->userAgent('WebhookAgent')
-                ->header('X-Custom', 'CustomHeader');
+            ->query(['webhook' => 'data'])
+            ->userAgent('WebhookAgent')
+            ->header('X-Custom', 'CustomHeader');
+    }
+}
+
+class FormTestNotification extends Notification
+{
+    public function toWebhook($notifiable)
+    {
+        return (new WebhookMessage())
+            ->form(['webhook' => 'data'])
+            ->userAgent('WebhookAgent')
+            ->header('X-Custom', 'CustomHeader');
     }
 }
