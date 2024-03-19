@@ -19,6 +19,13 @@ class WebhookMessage
     protected $data;
 
     /**
+     * The POST data of the Webhook request which is send as x-www-form-urlencoded.
+     *
+     * @var null|array
+     */
+    protected $form;
+
+    /**
      * The headers to send with the request.
      *
      * @var array|null
@@ -86,6 +93,20 @@ class WebhookMessage
     }
 
     /**
+     * Set the Webhook data to be send as x-www-form-urlencoded.
+     *
+     * @param null|array $form
+     *
+     * @return $this
+     */
+    public function form($form)
+    {
+        $this->form = $form;
+
+        return $this;
+    }
+
+    /**
      * Add a Webhook request custom header.
      *
      * @param string $name
@@ -116,7 +137,7 @@ class WebhookMessage
 
     /**
      * Indicate that the request should be verified.
-     *
+     * 
      * @return $this
      */
     public function verify($value = true)
@@ -132,10 +153,11 @@ class WebhookMessage
     public function toArray()
     {
         return [
-            'query' => $this->query,
-            'data' => $this->data,
+            'query'   => $this->query,
+            'data'    => $this->data,
+            'form'    => $this->form,
             'headers' => $this->headers,
-            'verify' => $this->verify,
+            'verify'  => $this->verify,
         ];
     }
 }

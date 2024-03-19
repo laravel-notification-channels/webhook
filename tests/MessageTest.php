@@ -41,6 +41,13 @@ class MessageTest extends TestCase
     }
 
     /** @test */
+    public function it_can_set_the_webhook_form_params()
+    {
+        $this->message->form(['foo' => 'bar']);
+        $this->assertEquals(['foo' => 'bar'], Arr::get($this->message->toArray(), 'form'));
+    }
+
+    /** @test */
     public function it_can_set_the_webhook_data()
     {
         $this->message->data(['foo' => 'bar']);

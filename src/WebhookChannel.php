@@ -12,7 +12,7 @@ class WebhookChannel
     /** @var Client */
     protected $client;
 
-    /**
+/**
      * @param Client $client
      */
     public function __construct(Client $client)
@@ -38,12 +38,20 @@ class WebhookChannel
 
         $webhookData = $notification->toWebhook($notifiable)->toArray();
 
-        $response = $this->client->post($url, [
-            'query' => Arr::get($webhookData, 'query'),
-            'body' => json_encode(Arr::get($webhookData, 'data')),
-            'verify' => Arr::get($webhookData, 'verify'),
+        $options = [
+            'query'   => Arr::get($webhookData, 'query'),
+            'verify'  => Arr::get($webhookData, 'verify'),
             'headers' => Arr::get($webhookData, 'headers'),
-        ]);
+        ];
+
+        if (Arr::get($webhookData, 'form')) {
+            $options['form_params'] = Arr::get($webhookData, 'form');
+        }
+        if (Arr::get($webhookData, 'data')) {
+            $options['body'] = json_encode(Arr::get($webhookData, 'data'));
+        }
+
+        $response = $this->client->post($url, $options);
 
         if ($response->getStatusCode() >= 300 || $response->getStatusCode() < 200) {
             throw CouldNotSendNotification::serviceRespondedWithAnError($response);
