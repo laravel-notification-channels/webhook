@@ -47,7 +47,7 @@ class WebhookMessage
     protected $verify = false;
 
     /**
-     * @param mixed $data
+     * @param  mixed $data
      *
      * @return static
      */
@@ -57,7 +57,7 @@ class WebhookMessage
     }
 
     /**
-     * @param mixed $data
+     * @param  mixed $data
      */
     public function __construct($data = '')
     {
@@ -67,8 +67,7 @@ class WebhookMessage
     /**
      * Set the Webhook parameters to be URL encoded.
      *
-     * @param mixed $query
-     *
+     * @param  mixed $query
      * @return $this
      */
     public function query($query)
@@ -81,8 +80,7 @@ class WebhookMessage
     /**
      * Set the Webhook data to be JSON encoded.
      *
-     * @param mixed $data
-     *
+     * @param  mixed $data
      * @return $this
      */
     public function data($data)
@@ -95,8 +93,7 @@ class WebhookMessage
     /**
      * Set the Webhook data to be send as x-www-form-urlencoded.
      *
-     * @param null|array $form
-     *
+     * @param  null|array $form
      * @return $this
      */
     public function form($form)
@@ -109,9 +106,8 @@ class WebhookMessage
     /**
      * Add a Webhook request custom header.
      *
-     * @param string $name
-     * @param string $value
-     *
+     * @param  string $name
+     * @param  string $value
      * @return $this
      */
     public function header($name, $value)
@@ -124,8 +120,7 @@ class WebhookMessage
     /**
      * Set the Webhook request UserAgent.
      *
-     * @param string $userAgent
-     *
+     * @param  string $userAgent
      * @return $this
      */
     public function userAgent($userAgent)
@@ -137,7 +132,7 @@ class WebhookMessage
 
     /**
      * Indicate that the request should be verified.
-     * 
+     *
      * @return $this
      */
     public function verify($value = true)
@@ -153,11 +148,11 @@ class WebhookMessage
     public function toArray()
     {
         return [
-            'query'   => $this->query,
-            'data'    => $this->data,
-            'form'    => $this->form,
+            'query' => $this->query,
+            'data' => $this->data,
+            'form' => $this->form,
             'headers' => $this->headers,
-            'verify'  => $this->verify,
+            'verify' => $this->verify,
         ];
     }
 }
