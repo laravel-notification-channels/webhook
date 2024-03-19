@@ -12,7 +12,7 @@ class WebhookChannel
     /** @var Client */
     protected $client;
 
-/**
+    /**
      * @param Client $client
      */
     public function __construct(Client $client)
@@ -23,8 +23,8 @@ class WebhookChannel
     /**
      * Send the given notification.
      *
-     * @param mixed $notifiable
-     * @param \Illuminate\Notifications\Notification $notification
+     * @param  mixed $notifiable
+     * @param  \Illuminate\Notifications\Notification $notification
      *
      * @return \GuzzleHttp\Psr7\Response
      *
@@ -39,8 +39,8 @@ class WebhookChannel
         $webhookData = $notification->toWebhook($notifiable)->toArray();
 
         $options = [
-            'query'   => Arr::get($webhookData, 'query'),
-            'verify'  => Arr::get($webhookData, 'verify'),
+            'query' => Arr::get($webhookData, 'query'),
+            'verify' => Arr::get($webhookData, 'verify'),
             'headers' => Arr::get($webhookData, 'headers'),
         ];
 
