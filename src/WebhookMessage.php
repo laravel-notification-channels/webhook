@@ -48,7 +48,6 @@ class WebhookMessage
 
     /**
      * @param  mixed  $data
-     *
      * @return static
      */
     public static function create($data = '')
@@ -68,7 +67,6 @@ class WebhookMessage
      * Set the Webhook parameters to be URL encoded.
      *
      * @param  mixed  $query
-     *
      * @return $this
      */
     public function query($query)
@@ -82,7 +80,6 @@ class WebhookMessage
      * Set the Webhook data to be JSON encoded.
      *
      * @param  mixed  $data
-     *
      * @return $this
      */
     public function data($data)
@@ -94,10 +91,9 @@ class WebhookMessage
 
 
     /**
-     * Set the Webhook method
+     * Set the Webhook method.
      *
      * @param  mixed  $data
-     *
      * @return $this
      */
     public function method($method)
@@ -112,7 +108,6 @@ class WebhookMessage
      *
      * @param  string  $name
      * @param  string  $value
-     *
      * @return $this
      */
     public function header($name, $value)
@@ -126,7 +121,6 @@ class WebhookMessage
      * Set the Webhook request UserAgent.
      *
      * @param  string  $userAgent
-     *
      * @return $this
      */
     public function userAgent($userAgent)
@@ -138,7 +132,6 @@ class WebhookMessage
 
     /**
      * Indicate that the request should be verified.
-     *
      * @return $this
      */
     public function verify($value = true)

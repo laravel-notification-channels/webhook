@@ -25,7 +25,6 @@ class WebhookChannel
      *
      * @param  mixed  $notifiable
      * @param  \Illuminate\Notifications\Notification  $notification
-     *
      * @return \GuzzleHttp\Psr7\Response
      *
      * @throws \NotificationChannels\Webhook\Exceptions\CouldNotSendNotification
