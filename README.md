@@ -95,6 +95,7 @@ public function routeNotificationForWebhook()
 - `userAgent('')`: Accepts a string value for the Webhook user agent.
 - `header($name, $value)`: Sets additional headers to send with the POST Webhook.
 - `verify()`: Enable the SSL certificate verification or provide the path to a CA bundle
+- `method('')`: Set the HTTP method to use for the Webhook request. Defaults to `POST`.
 
 ## Changelog
 

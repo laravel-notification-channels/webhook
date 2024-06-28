@@ -40,6 +40,13 @@ class WebhookMessage
     protected $verify = false;
 
     /**
+     * The Guzzle method option.
+     *
+     * @var string
+     */
+    protected $method = 'POST';
+
+    /**
      * @param mixed $data
      *
      * @return static
@@ -81,6 +88,21 @@ class WebhookMessage
     public function data($data)
     {
         $this->data = $data;
+
+        return $this;
+    }
+
+
+    /**
+     * Set the Webhook method
+     *
+     * @param mixed $data
+     *
+     * @return $this
+     */
+    public function method($method)
+    {
+        $this->method = $method;
 
         return $this;
     }
@@ -136,6 +158,7 @@ class WebhookMessage
             'data' => $this->data,
             'headers' => $this->headers,
             'verify' => $this->verify,
+            'method' => $this->method,
         ];
     }
 }
