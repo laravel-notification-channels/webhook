@@ -89,7 +89,6 @@ class WebhookMessage
         return $this;
     }
 
-
     /**
      * Set the Webhook method.
      *
@@ -132,6 +131,7 @@ class WebhookMessage
 
     /**
      * Indicate that the request should be verified.
+     *
      * @return $this
      */
     public function verify($value = true)
