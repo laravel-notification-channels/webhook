@@ -47,7 +47,7 @@ class WebhookMessage
     protected $method = 'POST';
 
     /**
-     * @param mixed $data
+     * @param  mixed  $data
      *
      * @return static
      */
@@ -57,7 +57,7 @@ class WebhookMessage
     }
 
     /**
-     * @param mixed $data
+     * @param  mixed  $data
      */
     public function __construct($data = '')
     {
@@ -67,7 +67,7 @@ class WebhookMessage
     /**
      * Set the Webhook parameters to be URL encoded.
      *
-     * @param mixed $query
+     * @param  mixed  $query
      *
      * @return $this
      */
@@ -81,7 +81,7 @@ class WebhookMessage
     /**
      * Set the Webhook data to be JSON encoded.
      *
-     * @param mixed $data
+     * @param  mixed  $data
      *
      * @return $this
      */
@@ -96,7 +96,7 @@ class WebhookMessage
     /**
      * Set the Webhook method
      *
-     * @param mixed $data
+     * @param  mixed  $data
      *
      * @return $this
      */
@@ -110,8 +110,8 @@ class WebhookMessage
     /**
      * Add a Webhook request custom header.
      *
-     * @param string $name
-     * @param string $value
+     * @param  string  $name
+     * @param  string  $value
      *
      * @return $this
      */
@@ -125,7 +125,7 @@ class WebhookMessage
     /**
      * Set the Webhook request UserAgent.
      *
-     * @param string $userAgent
+     * @param  string  $userAgent
      *
      * @return $this
      */
