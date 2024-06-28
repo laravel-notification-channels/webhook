@@ -67,4 +67,12 @@ class MessageTest extends TestCase
         $this->message->verify();
         $this->assertEquals(true, Arr::get($this->message->toArray(), 'verify'));
     }
+
+    /** @test */
+    public function it_can_set_the_method_to_get()
+    {
+        $webhookMessage = new WebhookMessage();
+        $webhookMessage->method('GET');
+        $this->assertEquals('GET', $webhookMessage->toArray()['method']);
+    }
 }

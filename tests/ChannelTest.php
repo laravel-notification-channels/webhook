@@ -18,9 +18,10 @@ class ChannelTest extends TestCase
     {
         $response = new Response(200);
         $client = Mockery::mock(Client::class);
-        $client->shouldReceive('post')
+        $client->shouldReceive('request')
             ->once()
             ->with(
+                'POST',
                 'https://notifiable-webhook-url.com',
                 [
                     'query' => null,
@@ -42,9 +43,10 @@ class ChannelTest extends TestCase
     {
         $response = new Response(201);
         $client = Mockery::mock(Client::class);
-        $client->shouldReceive('post')
+        $client->shouldReceive('request')
             ->once()
             ->with(
+                'POST',
                 'https://notifiable-webhook-url.com',
                 [
                     'query' => null,
@@ -66,9 +68,10 @@ class ChannelTest extends TestCase
     {
         $response = new Response();
         $client = Mockery::mock(Client::class);
-        $client->shouldReceive('post')
+        $client->shouldReceive('request')
             ->once()
             ->with(
+                'POST',
                 'https://notifiable-webhook-url.com',
                 [
                     'query' => [
@@ -100,7 +103,7 @@ class ChannelTest extends TestCase
         $this->expectExceptionCode(500);
 
         $client = Mockery::mock(Client::class);
-        $client->shouldReceive('post')
+        $client->shouldReceive('request')
             ->once()
             ->andReturn($response);
         $channel = new WebhookChannel($client);
