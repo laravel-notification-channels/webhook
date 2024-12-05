@@ -40,7 +40,7 @@ class WebhookChannel
 
         $response = $this->client->post($url, [
             'query' => Arr::get($webhookData, 'query'),
-            'body' => json_encode(Arr::get($webhookData, 'data')),
+            'json' => Arr::get($webhookData, 'data'),
             'verify' => Arr::get($webhookData, 'verify'),
             'headers' => Arr::get($webhookData, 'headers'),
         ]);
