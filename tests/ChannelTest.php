@@ -24,7 +24,7 @@ class ChannelTest extends TestCase
                 'https://notifiable-webhook-url.com',
                 [
                     'query' => null,
-                    'json' => ["payload" => ["webhook" => "data"]],
+                    'json' => ['payload' => ['webhook' => 'data']],
                     'verify' => false,
                     'headers' => [
                         'User-Agent' => 'WebhookAgent',
@@ -48,7 +48,7 @@ class ChannelTest extends TestCase
                 'https://notifiable-webhook-url.com',
                 [
                     'query' => null,
-                    'json' => ["payload" => ["webhook" => "data"]],
+                    'json' => ['payload' => ['webhook' => 'data']],
                     'verify' => false,
                     'headers' => [
                         'User-Agent' => 'WebhookAgent',
