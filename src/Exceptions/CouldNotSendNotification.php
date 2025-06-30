@@ -9,21 +9,19 @@ class CouldNotSendNotification extends \Exception
     private $response;
 
     /**
-     * @param Response $response
-     * @param string $message
-     * @param int|null $code
+     * @param  Response  $response
+     * @param  string  $message
+     * @param  int|null  $code
      */
-    public function __construct(Response $response, string $message, int $code = null)
+    public function __construct(Response $response, string $message, ?int $code = null)
     {
-        $this->response = $response;
-        $this->message = $message;
-        $this->code = $code ?? $response->getStatusCode();
+        parent::__construct($message, $code ?? $response->getStatusCode());
 
-        parent::__construct($message, $code);
+        $this->response = $response;
     }
 
     /**
-     * @param Response $response
+     * @param  Response  $response
      * @return self
      */
     public static function serviceRespondedWithAnError(Response $response)
