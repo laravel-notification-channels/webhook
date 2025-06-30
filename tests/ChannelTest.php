@@ -13,6 +13,13 @@ use Orchestra\Testbench\TestCase;
 
 class ChannelTest extends TestCase
 {
+    protected function setUp(): void
+    {
+        parent::setUp();
+
+        $this->withoutDeprecationHandling();
+    }
+
     /** @test */
     public function it_can_send_a_notification()
     {
